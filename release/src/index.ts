@@ -1,12 +1,13 @@
-const fs = require("fs");
-const path = require("path");
-const core = require("@actions/core");
-const github = require("@actions/github");
+import * as fs from "fs";
+import * as path from "path";
+import * as core from "@actions/core";
+import * as github from "@actions/github";
+import { generateReleaseNote } from "./generateReleaseNote";
+
 const npmPublish = require("@jsdevtools/npm-publish");
-const generateReleaseNote = require("./generateReleaseNote");
 const inputs = {
 	githubToken: core.getInput("github_token"),
-	npmToken: core.getInput("npm_token"),
+	npmToken: core.getInput("npm_token")
 };
 const targetDirPath = process.env.GITHUB_WORKSPACE;
 const packageJsonPath = path.join(targetDirPath, "package.json");
@@ -24,7 +25,7 @@ const gitCommitHash = process.env.GITHUB_SHA;
 			token: inputs.npmToken
 		});
 		const packageJson = require(packageJsonPath);
-		const version = packageJson["version"];
+		const version = packageJson.version;
 		let body = "";
 		if (fs.existsSync(changelogPath)) {
 			const changelog = fs.readFileSync(changelogPath).toString();
@@ -39,7 +40,7 @@ const gitCommitHash = process.env.GITHUB_SHA;
 			body: body,
 			target_commitish: gitCommitHash
 		});
-	} catch(error) {
+	} catch (error) {
 		core.setFailed(error.message);
 	}
 })();

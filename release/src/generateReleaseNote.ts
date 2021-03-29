@@ -1,4 +1,4 @@
-module.exports = (changelog, version) => {
+export const generateReleaseNote = (changelog: string, version: string): string => {
 	const changelogArray = changelog.split("\n");
 	const regex = /## (\d+\.\d+\..+)/;
 	let matchCount = 0;
