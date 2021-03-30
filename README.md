@@ -32,22 +32,35 @@ akashic-games organization のリポジトリで共通で利用する Github Act
 * スコープ化された公開パッケージの場合、package.jsonの`publishConfig.access`に`"public"`を指定する必要があります。
 
 ## ビルド方法
-以下のコマンドを実行
+以下のコマンドを実行。
 
 ```
 npm install
-npm run build
+npm run build --workspaces
 ```
 
 上記コマンドによって、各アクションのディレクトリ下に`dist/index.js`というビルド成果物が生成されます。
 アクションを更新するためにはビルド生成物をgit管理する必要があります。
 
+ただし、上記コマンドは以下の環境で実行する必要があります。
+* node 15以上
+* npm 7以上
+
 ## テスト方法
 以下のコマンドを実行
 
 ```
-npm test
+npm test --workspaces
 ```
+
+ただし、上記コマンドは以下の環境で実行する必要があります。
+* node 15以上
+* npm 7以上
+
+## アクションの追加方法
+アクションを追加する場合は、以下の対応が必要になります。
+* アクション用のディレクトリを切る
+* 追加したディレクトリを package.json の workspaces に追記
 
 ## ライセンス
 

@@ -1,7 +1,7 @@
 {
   "name": "@akashic/actions-release",
   "version": "1.0.0",
-  "description": "action to relase akashic oss",
+  "description": "action to release akashic oss",
   "private": true,
   "scripts": {
     "prepare": "npm run build",
@@ -9,9 +9,9 @@
     "build:ts": "tsc -p .",
     "bundle": "ncc build lib/index.js -o dist -m",
     "test": "npm run test:jest && npm run lint",
-    "test:jest": "jest --config jest.config.js",
-    "format": "prettier --write \"src/**/*.ts\" --config prettier.config.json",
-    "lint": "eslint -c .eslintrc \"src/**/*.ts\" --fix"
+    "test:jest": "jest",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\" --fix"
   },
   "author": "DWANGO Co., Ltd.",
   "license": "MIT",
@@ -32,5 +32,61 @@
     "prettier": "^2.2.1",
     "ts-jest": "^26.5.4",
     "typescript": "^4.2.3"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "./src/**/*.ts",
+      "!./src/__tests__/**/*.ts"
+    ],
+    "coverageReporters": [
+      "lcov"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.jest.json"
+      }
+    },
+    "testMatch": [
+      "<rootDir>/src/__tests__/*Spec.ts"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSpacing": true,
+    "printWidth": 140,
+    "singleQuote": false,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "useTabs": true
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "commonjs": true
+    },
+    "extends": [
+        "@akashic/eslint-config",
+        "prettier"
+    ],
+    "parserOptions": {
+        "project": "tsconfig.eslint.json",
+        "sourceType": "module"
+    },
+    "ignorePatterns": [
+        "*.js",
+        "**/*.d.ts"
+    ],
+    "rules": {
+        "@typescript-eslint/no-var-requires": 0
+    }
   }
 }

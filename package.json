@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Common actions for repositories of akashic-games organization",
   "private": true,
+  "engines": {
+    "node": ">=15.0.0",
+    "npm": ">=7.0.0"
+  },
   "scripts": {
     "test": "run-s test:*",
     "test:release": "cd release && npm test && cd .."

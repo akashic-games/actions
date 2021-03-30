@@ -1,7 +1,6 @@
 import { generateReleaseNote } from "../generateReleaseNote";
 
-describe("test generateReleaseNote", () => {
-	const changelog = `
+const changelog = `
 # CHANGELOG
 
 ## 2.0.1
@@ -16,13 +15,14 @@ describe("test generateReleaseNote", () => {
 ## 1.5.1
 `;
 
-	const changelogWithOneVersion = `
+const changelogWithOneVersion = `
 # CHANGELOG
 
 ## 1.0.0
 * first release
 `;
 
+describe("test generateReleaseNote", () => {
 	it("CHANGELOGに記載されているバージョンの内容を取得できる", () => {
 		expect(generateReleaseNote(changelog, "2.0.1")).toEqual("* test1\n\n");
 		expect(generateReleaseNote(changelog, "2.0.0-beta.12")).toEqual("* test2\n\n");
