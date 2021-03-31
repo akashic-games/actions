@@ -5,9 +5,8 @@
   "private": true,
   "scripts": {
     "prepare": "npm run build",
-    "build": "npm run build:ts && npm run bundle && npm run format",
-    "build:ts": "tsc -p .",
-    "bundle": "ncc build lib/index.js -o dist -m",
+    "build": "npm run bundle && npm run format",
+    "bundle": "ncc build src/index.ts -o dist -m",
     "test": "npm run test:jest && npm run lint",
     "test:jest": "jest",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -56,7 +55,7 @@
       }
     },
     "testMatch": [
-      "<rootDir>/src/__tests__/*Spec.ts"
+      "<rootDir>/src/__tests__/*.spec.ts"
     ]
   },
   "prettier": {
@@ -74,19 +73,19 @@
       "commonjs": true
     },
     "extends": [
-        "@akashic/eslint-config",
-        "prettier"
+      "@akashic/eslint-config",
+      "prettier"
     ],
     "parserOptions": {
-        "project": "tsconfig.eslint.json",
-        "sourceType": "module"
+      "project": "tsconfig.eslint.json",
+      "sourceType": "module"
     },
     "ignorePatterns": [
-        "*.js",
-        "**/*.d.ts"
+      "*.js",
+      "**/*.d.ts"
     ],
     "rules": {
-        "@typescript-eslint/no-var-requires": 0
+      "@typescript-eslint/no-var-requires": 0
     }
   }
 }
