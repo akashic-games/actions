@@ -5,8 +5,6 @@
     "lib": ["es6"],
     "noImplicitAny": true,
     "module": "commonjs",
-    "outDir": "./lib",
-    "declaration": true,
     "types" : ["node"]
   },
   "include": [

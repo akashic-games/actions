@@ -1,10 +1,9 @@
 {
-  "name": "@akashic/actions-release",
+  "name": "release",
   "version": "1.0.0",
   "description": "action to release akashic oss",
   "private": true,
   "scripts": {
-    "prepare": "npm run build",
     "build": "npm run bundle && npm run format",
     "bundle": "ncc build src/index.ts -o dist -m",
     "test": "npm run test:jest && npm run lint",
