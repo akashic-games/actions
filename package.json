@@ -4,7 +4,7 @@
   "description": "Common actions for repositories of akashic-games organization",
   "private": true,
   "scripts": {
-    "postinstall": "lerna bootstrap --no-ci",
+    "postinstall": "lerna bootstrap",
     "build": "lerna run build",
     "test": "lerna run test"
   },

@@ -5,7 +5,8 @@
     "lib": ["es6"],
     "noImplicitAny": true,
     "module": "commonjs",
-    "types" : ["node"]
+    "types" : ["node"],
+    "declaration": false
   },
   "include": [
     "./src/**/*.ts"

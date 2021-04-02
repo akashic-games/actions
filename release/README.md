@@ -34,7 +34,7 @@
 以下のコマンドを実行。
 
 ```
-npm install
+npm run build
 ```
 
 上記コマンドによって、`dist/index.js`というビルド成果物が生成されます。

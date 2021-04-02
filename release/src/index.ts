@@ -2,9 +2,9 @@ import * as fs from "fs";
 import * as path from "path";
 import * as core from "@actions/core";
 import * as github from "@actions/github";
+import { npmPublish } from "@jsdevtools/npm-publish";
 import { generateReleaseNote } from "./generateReleaseNote";
 
-const npmPublish = require("@jsdevtools/npm-publish");
 const inputs = {
 	githubToken: core.getInput("github_token"),
 	npmToken: core.getInput("npm_token")
@@ -24,6 +24,7 @@ const gitCommitHash = process.env.GITHUB_SHA;
 			package: packageJsonPath,
 			token: inputs.npmToken
 		});
+		// eslint-disable-next-line @typescript-eslint/no-var-requires
 		const packageJson = require(packageJsonPath);
 		const version = packageJson.version;
 		let body = "";
