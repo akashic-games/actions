@@ -11503,7 +11503,9 @@ const gitCommitHash = process.env.GITHUB_SHA;
 	try {
 		await npmPublish({
 			package: packageJsonPath,
-			token: inputs.npmToken
+			token: inputs.npmToken,
+			dryRun: true,
+			debug: console.debug
 		});
 		const packageJson = require(packageJsonPath);
 		const version = packageJson["version"];
